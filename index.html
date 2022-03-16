@@ -101,7 +101,8 @@
     <script src="app.js"></script>
   </body>
   
-  
+  <td><%= link_to movie.title, movie_path(movie.id) %></td>
+          <td><%= movie.body %></td>
   
 
 
@@ -110,7 +111,8 @@
 <
 
 
-
+  <%= f.text_field :title, value: @movie.title, class: "form-control"%>
+  <%= f.text_area :body, value: @movie.body, class: "form-control" %>
   
 
 
