@@ -95,7 +95,7 @@
 
 
 
-
+  <%= link_to "ログアウト", logout_path, method: :delete %>
 
 <h4>test</h4><h2>test</h2>
     <script src="app.js"></script>
@@ -187,14 +187,24 @@ def divisors(num)
   result
 end
 
-def divisors(num)
-  (1..num).select{ |i| num % i == 0 }
-end
-
-def divisor_sum(num, limit)
-  (1..limit).select{ |i| num % i == 0 }.sum
-end
 
 puts divisor_sum(1234567890, 30000000)
 
 
+<div>
+  <%= form_with model: @movie, local: true do |f| %>
+    <div>
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title, value: @movie.title, class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :body, "Opinion" %>
+      <%= f.text_area :body, value: @movie.body, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Update MEMO", class: "btn btn-success" %>
+    </div>
+  <% end %>
+    <%= link_to "メモ詳細へ", movie_path(params[:id]) %>
+    <%= link_to "メモ一覧へ", movies_path(params[:id]) %>
+</div>
